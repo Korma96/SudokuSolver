@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SudokuSolver.Helper;
+using SudokuSolver.Service;
+using System;
 
 namespace SudokuSolver
 {
@@ -6,7 +8,9 @@ namespace SudokuSolver
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var table = FileService.ReadTable(Settings.ReadPath);
+            Console.WriteLine(table.ToString());
+            Console.ReadKey();
         }
     }
 }
