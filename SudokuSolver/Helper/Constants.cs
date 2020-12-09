@@ -7,5 +7,7 @@
         public const string VerticalLine = "|";
 
         public const string HorizontalLine = "-";
+
+        public const string Equality = "=";
     }
 }

@@ -12,11 +12,12 @@ namespace SudokuSolver.Model
 
         public Field(string value)
         {
+            PossibleValues = HelperMethods.GetAllPossibleValues();
             if (!string.IsNullOrWhiteSpace(value))
             {
                 Value = int.Parse(value);
+                RemovePossibleValue(Value.Value);
             }
-            PossibleValues = HelperMethods.GetAllPossibleValues();
         }
 
         public int? Value { get; set; }
@@ -25,9 +26,25 @@ namespace SudokuSolver.Model
 
         public List<int> PossibleValues { get; set; }
 
+        public void RemovePossibleValue(int value)
+        {
+            PossibleValues.Remove(value);
+            HelperMethods.Log(PossibleValues.Count);
+            if (PossibleValues.Count == 1)
+            {
+                Value = PossibleValues[0];
+                System.Console.WriteLine("seeeeeeeeet");
+            }
+        }
+
+        public void RemovePossibleValue(Field field)
+        {
+            RemovePossibleValue(field.Value.Value);
+        }
+
         public override string ToString()
         {
-            return IsEmpty ? Constants.Space : Value.ToString();
+            return IsEmpty ? $" {Constants.Space} " : $" {Value.ToString()} ";
         }
     }
 }

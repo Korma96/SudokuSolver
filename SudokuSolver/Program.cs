@@ -10,6 +10,8 @@ namespace SudokuSolver
         {
             var table = FileService.ReadTable(Settings.ReadPath);
             Console.WriteLine(table.ToString());
+            SolverService.Solve(table);
+            Console.WriteLine(table.ToString());
             Console.ReadKey();
         }
     }

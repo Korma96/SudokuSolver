@@ -12,6 +12,10 @@ namespace SudokuSolver.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
+            for (int k = 0; k < 39; k++)
+                sb.Append(Constants.HorizontalLine);
+            sb.AppendLine();
+
             for (int i=0; i < Rows.Length; i++)
             {
                 for (int j = 0; j < Rows[i].Length; j++)
@@ -20,11 +24,21 @@ namespace SudokuSolver.Model
                         sb.Append(Constants.VerticalLine);
                     sb.Append(Rows[i][j].ToString());
                     sb.Append(Constants.VerticalLine);
+                    if (j == 2 || j == 5)
+                        sb.Append(Constants.VerticalLine);
                 }
 
                 sb.AppendLine();
-                for (int k = 0; k < 19; k++)
-                    sb.Append(Constants.HorizontalLine);
+                if (i == 2 || i == 5)
+                {
+                    for (int k = 0; k < 39; k++)
+                        sb.Append(Constants.Equality);
+                }
+                else
+                {
+                    for (int k = 0; k < 39; k++)
+                        sb.Append(Constants.HorizontalLine);
+                }
                 sb.AppendLine();
             }
             return sb.ToString();

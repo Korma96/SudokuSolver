@@ -1,4 +1,5 @@
-﻿using SudokuSolver.Model;
+﻿using SudokuSolver.Helper;
+using SudokuSolver.Model;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,9 @@ namespace SudokuSolver.Service
 
             return new Table
             {
-                Rows = rows.ToArray()
+                Rows = rows.ToArray(),
+                Columns = HelperMethods.ConvertRowsToColumns(rows.ToArray()),
+                Squares = HelperMethods.ConvertRowsToSquares(rows.ToArray())
             };
         }
     }
